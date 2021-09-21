@@ -48,4 +48,23 @@ for (let index = 0; index < 9; index++) {
   saveBtn.attr("data-id", index);
 
   startTime++;
+
+  // Set classes for past, present, future time block
+  function setDescClass() {
+    // Set class for Description div based on past/present/future
+    if (moment(startTime).isBefore(currentTime)) {
+      eventDesc.addClass("past");
+      console.log("past");
+    }
+
+    if (moment(startTime).isSame(currentTime)) {
+      eventDesc.addClass("present");
+      console.log("present");
+    }
+
+    if (moment(startTime).isAfter(currentTime)) {
+      eventDesc.addClass("future");
+      console.log("future");
+    }
+  }
 }
