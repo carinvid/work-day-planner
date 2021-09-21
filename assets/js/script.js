@@ -1,11 +1,11 @@
-// Display current date in jumbotron
-$("#currentDay").text(moment().format("llll"));
-
 // Initialize empty array for saved events
 var events = JSON.parse(localStorage.getItem("events")) || [];
 var checkStorage = localStorage.getItem("events");
 var startTime = 9;
 var currentTime = parseInt(moment().format("H"));
+
+// Display current date in jumbotron
+$("#currentDay").text(moment().format("llll"));
 
 // Generate time blocks for 9 am to 5 pm
 for (let index = 0; index < 9; index++) {
@@ -20,6 +20,7 @@ for (let index = 0; index < 9; index++) {
     console.log(events);
     localStorage.setItem("events", JSON.stringify(events));
   }
+
   // Populate first column with time
   var tableTime = $('<div class="hour col-1">');
   var hour = moment(startTime, "h").format("LT");
@@ -31,6 +32,7 @@ for (let index = 0; index < 9; index++) {
   eventDesc.attr("data-time", startTime);
 
   setDescClass();
+
   var eventTextArea = $('<textarea cols="65" rows="3"></textarea>');
   eventDesc.html(eventTextArea);
   eventTextArea.attr("data-id", index);
@@ -68,6 +70,7 @@ function setDescClass() {
     console.log("future");
   }
 }
+
 // Add event listener to save button
 $(".far").on("click", function () {
   // Get data-id of save click which is set to index in array
