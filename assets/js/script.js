@@ -20,4 +20,15 @@ for (let index = 0; index < 9; index++) {
     console.log(activities);
     localStorage.setItem("events", JSON.stringify(activities));
   }
+  // Populate first column with time
+  var tableTime = $('<div class="hour col-1">');
+  var hour = moment(startTime, "h").format("LT");
+  tableTime.text(hour);
+  divRow.append(tableTime);
+
+  // Create Description div and <textarea>s for events
+  var eventDesc = $('<div class="description col-10">');
+  eventDesc.attr("data-time", startTime);
+
+  setDescClass();
 }
