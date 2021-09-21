@@ -48,23 +48,41 @@ for (let index = 0; index < 9; index++) {
   saveBtn.attr("data-id", index);
 
   startTime++;
+}
 
-  // Set classes for past, present, future time block
-  function setDescClass() {
-    // Set class for Description div based on past/present/future
-    if (moment(startTime).isBefore(currentTime)) {
-      eventDesc.addClass("past");
-      console.log("past");
-    }
+// Set classes for past, present, future time block
+function setDescClass() {
+  // Set class for Description div based on past/present/future
+  if (moment(startTime).isBefore(currentTime)) {
+    eventDesc.addClass("past");
+    console.log("past");
+  }
 
-    if (moment(startTime).isSame(currentTime)) {
-      eventDesc.addClass("present");
-      console.log("present");
-    }
+  if (moment(startTime).isSame(currentTime)) {
+    eventDesc.addClass("present");
+    console.log("present");
+  }
 
-    if (moment(startTime).isAfter(currentTime)) {
-      eventDesc.addClass("future");
-      console.log("future");
-    }
+  if (moment(startTime).isAfter(currentTime)) {
+    eventDesc.addClass("future");
+    console.log("future");
   }
 }
+// Add event listener to save button
+$(".far").on("click", function () {
+  // Get data-id of save click which is set to index in array
+  var dataId = $(this).attr("data-id");
+  console.log("The data-id of clicked item is: " + dataId);
+
+  // Take textarea value with that currentId and...
+  var eventText = $(`textarea[data-id|='${dataId}']`).val();
+  console.log("Event text is " + eventText);
+
+  // Set to description property of that ID/index in events array
+  events[dataId].description = eventText;
+  console.log(events);
+
+  localStorage.setItem("events", JSON.stringify(events));
+
+  console.log("Description saved for id: " + dataId);
+});
