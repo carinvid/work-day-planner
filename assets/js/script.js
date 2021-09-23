@@ -4,7 +4,7 @@ var checkStorage = localStorage.getItem("events");
 var startTime = 9;
 var currentTime = parseInt(moment().format("H"));
 
-// Display current date in jumbotron
+// current date
 $("#currentDay").text(moment().format("llll"));
 
 // Generate time blocks for 9 am to 5 pm
@@ -15,7 +15,7 @@ for (let index = 0; index < 9; index++) {
   $(".container").append(divRow);
 
   if (checkStorage === null) {
-    // Create objects in events array with index as id for local storage
+    // local storage
     events.push({ eventId: index });
     console.log(events);
     localStorage.setItem("events", JSON.stringify(events));
@@ -27,7 +27,6 @@ for (let index = 0; index < 9; index++) {
   tableTime.text(hour);
   divRow.append(tableTime);
 
-  // Create Description div and <textarea>s for events
   var eventDesc = $('<div class="description col-10">');
   eventDesc.attr("data-time", startTime);
 
@@ -38,7 +37,6 @@ for (let index = 0; index < 9; index++) {
   eventTextArea.attr("data-id", index);
   divRow.append(eventDesc);
 
-  // Get event description out of local storage to display in text event
   var eventText = events[index].description;
   eventTextArea.val(eventText);
 
@@ -54,7 +52,6 @@ for (let index = 0; index < 9; index++) {
 
 // Set classes for past, present, future time block
 function setDescClass() {
-  // Set class for Description div based on past/present/future
   if (moment(startTime).isBefore(currentTime)) {
     eventDesc.addClass("past");
     console.log("past");
@@ -77,11 +74,9 @@ $(".far").on("click", function () {
   var dataId = $(this).attr("data-id");
   console.log("The data-id of clicked item is: " + dataId);
 
-  // Take textarea value with that currentId and...
   var eventText = $(`textarea[data-id|='${dataId}']`).val();
   console.log("Event text is " + eventText);
 
-  // Set to description property of that ID/index in events array
   events[dataId].description = eventText;
   console.log(events);
 
