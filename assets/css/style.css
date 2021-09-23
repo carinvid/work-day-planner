@@ -1,6 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1;
   margin-bottom: 50px;
 }
@@ -16,7 +16,7 @@ body {
 .date {
   letter-spacing: 3px;
   font-weight: 700;
-  padding-top: 10px;
+  padding-top: 5px;
   padding-bottom: 0;
 }
 
@@ -27,7 +27,7 @@ body {
 
 .row {
   white-space: pre-wrap;
-  height: 80px;
+  height: 60px;
   border-top: 1px solid white;
 }
 
@@ -50,7 +50,6 @@ textarea {
   border: none;
   resize: none;
   color: #1620af;
-
   padding: 10px;
 }
 
@@ -71,6 +70,7 @@ textarea {
 
 .saveBtn {
   border-top-right-radius: 15px;
+  border-color: black !important;
   border-bottom-right-radius: 15px;
   background-color: #c82b25;
   color: white;
